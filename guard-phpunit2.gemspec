@@ -12,10 +12,9 @@ Gem::Specification.new do |s|
   s.description = %q{Guard::PHPUnit automatically run your unit-tests written with the PHPUnit testing framework.}
   s.license     = "MIT"
 
-  s.required_rubygems_version = '>= 1.3.6'
   s.rubyforge_project = 'guard-phpunit2'
 
-  s.add_runtime_dependency 'guard', '~> 1.1'
+  s.add_runtime_dependency 'guard'
 
   s.add_development_dependency 'bundler'
   s.add_development_dependency 'rspec'

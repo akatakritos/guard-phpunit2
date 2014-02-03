@@ -8,11 +8,11 @@ module Guard
   #
   class PHPUnit2 < Guard
 
-    autoload :Inspector, 'guard/phpunit2/inspector'
-    autoload :Formatter, 'guard/phpunit2/formatter'
-    autoload :Notifier,  'guard/phpunit2/notifier'
-    autoload :Runner,    'guard/phpunit2/runner'
-    autoload :LogReader, 'guard/phpunit2/logreader'
+    require 'guard/phpunit2/inspector'
+    require 'guard/phpunit2/formatter'
+    require 'guard/phpunit2/notifier'
+    require 'guard/phpunit2/runner'
+    require 'guard/phpunit2/logreader'
 
     VERSION = '0.2.5'
 
