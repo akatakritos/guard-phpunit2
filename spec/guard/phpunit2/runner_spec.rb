@@ -58,16 +58,6 @@ describe Guard::PHPUnit2::Runner do
         subject.run( ['tests'] , {:command => '/usr/local/bin/phpunit'} )
       end
 
-      it 'prints the tests output to the console' do
-          output = load_phpunit_output('passing')
-          subject.stub(:notify_start)
-          subject.stub(:execute_command).and_return(output)
-
-          #ui.should_receive(:info).with(output)
-
-          subject.run( ['tests'] )
-      end
-
       context 'when PHPUnit executes the tests' do
         it 'parses the tests log output' do
           log    = load_phpunit_output('passing-json')
@@ -89,8 +79,7 @@ describe Guard::PHPUnit2::Runner do
         it 'notifies about the tests output even when they contain failures' do
           $?.stub(:success? => false, :exitstatus => 1)
 
-          output = load_phpunit_output('failing')
-          subject.stub(:execute_command).and_return(output)
+          subject.stub(:execute_command)
           subject.should_receive(:notify_results).with(anything(), anything())
 
           subject.run( ['tests'] )
@@ -99,8 +88,7 @@ describe Guard::PHPUnit2::Runner do
         it 'notifies about the tests output even when they contain errors' do
           $?.stub(:success? => false, :exitstatus => 2)
 
-          output = load_phpunit_output('errors')
-          subject.stub(:execute_command).and_return(output)
+          subject.stub(:execute_command)
           subject.should_receive(:notify_results).with(anything(), anything())
 
           subject.run( ['tests'] )

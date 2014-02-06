@@ -427,7 +427,7 @@ class PHPUnit_Extensions_Progress_ResultPrinter extends PHPUnit_TextUI_ResultPri
     static $deletedHeader = false;
 
     if ( ! $deletedHeader ) {
-      ob_clean();
+      ob_end_clean();
       $deletedHeader = true;
     }
 

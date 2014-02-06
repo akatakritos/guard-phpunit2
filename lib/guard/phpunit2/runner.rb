@@ -194,13 +194,12 @@ module Guard
         # @return [String] the output of the executed command
         #
         def execute_command(command)
-          %x{#{command}}
+          system(command)
         end
 
         def execute_phpunit(tests_path, options)
           log_file = Tempfile.new "guard-phpunit2"
-          output = execute_command(phpunit_command(tests_path, options, log_file.path))
-          puts output
+          execute_command(phpunit_command(tests_path, options, log_file.path))
 
           log = log_file.read
           log_file.close
